@@ -15,7 +15,7 @@ class ProductFixtures extends Fixture
         
         foreach ($productFixtures as $fixture) {
             $product = new Product();
-            $product->setName($fixture['title'])
+            $product->setName($fixture['title']);
             $manager->persist($product);
         }
         
