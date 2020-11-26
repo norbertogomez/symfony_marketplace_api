@@ -11,15 +11,14 @@ class ProductFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $json = file_get_contents("/src/DataFixtures/products.json");
-        $products = json_decode($json, true);
-        products = array();
-
-        for ($i = 0; $i < count($products); $i++) {
+        $productFixtures = json_decode($json, true);
+        
+        foreach ($productFixtures as $fixture) {
             $product = new Product();
-            $product->name = $title;
+            $product->setName($fixture['title'])
             $manager->persist($product);
-            echo $product; 
         }
+        
         $manager->flush();
     }
 }
